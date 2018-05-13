@@ -10,20 +10,20 @@ import { AnalyticsService } from './utils/analytics.service';
 
 const socialLinks = [
   {
-    url: 'https://github.com/akveo/nebular',
+    url: 'https://github.com/rolfwessels/coredocker',
     target: '_blank',
     icon: 'socicon-github',
   },
-  {
-    url: 'https://www.facebook.com/akveo/',
-    target: '_blank',
-    icon: 'socicon-facebook',
-  },
-  {
-    url: 'https://twitter.com/akveo_inc',
-    target: '_blank',
-    icon: 'socicon-twitter',
-  },
+  // {
+  //   url: 'https://www.facebook.com/akveo/',
+  //   target: '_blank',
+  //   icon: 'socicon-facebook',
+  // },
+  // {
+  //   url: 'https://twitter.com/akveo_inc',
+  //   target: '_blank',
+  //   icon: 'socicon-twitter',
+  // },
 ];
 
 const NB_CORE_PROVIDERS = [
