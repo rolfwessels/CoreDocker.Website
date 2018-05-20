@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Location } from '@angular/common';
-import { AuthService } from './auth.service';
 import { NbAuthService } from '@nebular/auth/services';
 import { OAuth2Token, AccessTokenWithExpireDate } from '../auth/oath2Token';
 import { Observable } from 'rxjs/Observable';
@@ -18,10 +17,10 @@ export class ApiService {
   ) {
     this._location = 'http://localhost:5000';
     this.authService.onTokenChange()
-    .subscribe((token: OAuth2Token) => {
-      this.hasValidToken = token.isValid();
-      this.token = this.hasValidToken ? token.accessToken : null;
-    });
+      .subscribe((token: OAuth2Token) => {
+        this.hasValidToken = token.isValid();
+        this.token = this.hasValidToken ? token.accessToken : null;
+      });
 
   }
 

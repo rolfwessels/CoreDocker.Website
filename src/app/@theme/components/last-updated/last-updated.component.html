@@ -1,0 +1,11 @@
+<nb-card>
+
+  <nb-card-body>
+    <div *ngIf="references === null">Loading...</div>
+
+    <div *ngFor="let reference of (references| slice:0:5);">
+      <a href="#/users/{{reference.id}}">{{reference.name}}</a>
+    </div>
+    <div>of {{references?.length}}</div>
+  </nb-card-body>
+</nb-card>
