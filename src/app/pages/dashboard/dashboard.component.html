@@ -1,5 +1,8 @@
 <div class="row">
-  <nb-card>
-    <nb-card-body>Hello from ngx-admin sandbox project.</nb-card-body>
+  <nb-card *ngIf="!hasValidToken">
+    <nb-card-body >Please <a href="#/auth/login">login</a> to continue.</nb-card-body>
+  </nb-card>
+  <nb-card *ngIf="hasValidToken">
+    <nb-card-body >Welcome user [{{(user | async)?.name}}].</nb-card-body>
   </nb-card>
 </div>

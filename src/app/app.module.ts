@@ -7,7 +7,7 @@ import { APP_BASE_HREF } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CoreModule } from './@core/core.module';
 
 import { AppComponent } from './app.component';
@@ -16,6 +16,7 @@ import { ThemeModule } from './@theme/theme.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NB_AUTH_TOKEN_CLASS } from '@nebular/auth';
 import { OAuth2Token } from './@core/auth/oath2Token';
+import { OAuth2Interceptor } from './@core/data/oauth2.interceptor';
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import { OAuth2Token } from './@core/auth/oath2Token';
   providers: [
     { provide: APP_BASE_HREF, useValue: '/' },
     { provide: NB_AUTH_TOKEN_CLASS, useValue: OAuth2Token },
+    { provide: HTTP_INTERCEPTORS, useClass: OAuth2Interceptor, multi: true },
   ],
 })
 export class AppModule {

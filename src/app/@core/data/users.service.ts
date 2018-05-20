@@ -1,37 +1,42 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
+import { User } from './user.model';
+import { ApiService } from './api.service';
+import { error } from 'selenium-webdriver';
 
-let counter = 0;
+import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
+
+enum UserApiUrls {
+  getAll = '/api/user',
+  insert = '/api/user',
+  getAllDetail = '/api/user/detail',
+  getById = '/api/user/{id}',
+  update = '/api/user/{id}',
+  delete = '/api/user/{id}',
+  getRoles = '/api/user/roles',
+  register = '/api/user/register',
+  forgotpassword = '/api/user/forgotpassword',
+  whoami = '/api/user/whoami',
+}
 
 @Injectable()
 export class UserService {
+  private _prefix: string;
 
-  private users = {
-    nick: { name: 'Nick Jones', picture: 'assets/images/nick.png' },
-    eva: { name: 'Eva Moor', picture: 'assets/images/eva.png' },
-    jack: { name: 'Jack Williams', picture: 'assets/images/jack.png' },
-    lee: { name: 'Lee Wong', picture: 'assets/images/lee.png' },
-    alan: { name: 'Alan Thompson', picture: 'assets/images/alan.png' },
-    kate: { name: 'Kate Martinez', picture: 'assets/images/kate.png' },
-  };
-
-  private userArray: any[];
-
-  constructor() {
-    // this.userArray = Object.values(this.users);
+  constructor(private apiService: ApiService) {
+    this._prefix = '/api/user';
   }
 
-  getUsers(): Observable<any> {
-    return Observable.of(this.users);
+  getAll(): Observable<User> {
+    throw new Error('not implementd');
   }
 
-  getUserArray(): Observable<any[]> {
-    return Observable.of(this.userArray);
+  getWhoami(): Observable<User> {
+    const url = UserApiUrls.whoami;
+    const result = this.apiService.get(url);
+    return result;
   }
 
-  getUser(): Observable<any> {
-    counter = (counter + 1) % this.userArray.length;
-    return Observable.of(this.userArray[counter]);
-  }
 }
+

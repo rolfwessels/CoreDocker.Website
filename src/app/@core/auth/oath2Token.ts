@@ -2,7 +2,7 @@ import { NbAuthSimpleToken } from '@nebular/auth';
 
 export class OAuth2Token extends NbAuthSimpleToken {
 
-  private accessToken: AccessTokenWithExpireDate;
+  public accessToken: AccessTokenWithExpireDate;
   constructor(readonly payload: string) {
     super(payload);
     try {
