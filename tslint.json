@@ -37,7 +37,7 @@
     "member-access": false,
     "no-arg": true,
     "no-console": [
-      true,
+      false,
       "debug",
       "log",
       "time",
@@ -75,7 +75,7 @@
     ],
     "radix": true,
     "semicolon": [
-      "always"
+      true
     ],
     "triple-equals": [
       true,

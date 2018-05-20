@@ -14,6 +14,9 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ThemeModule } from './@theme/theme.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NB_AUTH_TOKEN_CLASS } from '@nebular/auth';
+import { OAuth2Token } from './@core/auth/oath2Token';
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -30,6 +33,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   bootstrap: [AppComponent],
   providers: [
     { provide: APP_BASE_HREF, useValue: '/' },
+    { provide: NB_AUTH_TOKEN_CLASS, useValue: OAuth2Token },
   ],
 })
 export class AppModule {
