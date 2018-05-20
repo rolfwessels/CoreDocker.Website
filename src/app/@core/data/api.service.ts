@@ -18,10 +18,10 @@ export class ApiService {
   ) {
     this._location = 'http://localhost:5000';
     this.authService.onTokenChange()
-    .subscribe((token: OAuth2Token) => {
-      this.hasValidToken = token.isValid();
-      this.token = this.hasValidToken ? token.accessToken : null;
-    });
+      .subscribe((token: OAuth2Token) => {
+        this.hasValidToken = token.isValid();
+        this.token = this.hasValidToken ? token.accessToken : null;
+      });
 
   }
 

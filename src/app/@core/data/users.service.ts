@@ -1,10 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/of';
-import { User } from './user.model';
+import { User, UserCreateUpdateModel, UserReferenceModel } from './user.model';
 import { ApiService } from './api.service';
-import { error } from 'selenium-webdriver';
-
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
 
 enum UserApiUrls {
@@ -28,13 +25,61 @@ export class UserService {
     this._prefix = '/api/user';
   }
 
-  getAll(): Observable<User> {
-    throw new Error('not implementd');
+  getAll(): Observable<UserReferenceModel[]> {
+    const result = this.apiService.get(UserApiUrls.getAll);
+    return result;
+  }
+
+  insert(): Observable<User> {
+    const result = this.apiService.get(UserApiUrls.insert);
+    // todo !!!
+    return result;
+  }
+
+  getAllDetail(): Observable<User[]> {
+    const result = this.apiService.get(UserApiUrls.getAllDetail);
+    // todo !!!
+    return result;
+  }
+
+  getById(): Observable<User> {
+    const result = this.apiService.get(UserApiUrls.getById);
+    // todo !!!
+    return result;
+  }
+
+  update(id: string, user: UserCreateUpdateModel): Observable<User> {
+    const result = this.apiService.get(UserApiUrls.update);
+    // todo !!!
+    return result;
+  }
+
+  delete(id): Observable<User> {
+    const result = this.apiService.get(UserApiUrls.delete);
+    // todo !!!
+    return result;
+  }
+
+  getRoles(): Observable<string[]> {
+    const result = this.apiService.get(UserApiUrls.getRoles);
+    // todo !!!
+    return result;
+  }
+
+  register(user: UserCreateUpdateModel): Observable<User> {
+    const result = this.apiService.get(UserApiUrls.register);
+    // todo !!!
+    return result;
+  }
+
+  forgotpassword(): Observable<User> {
+    const result = this.apiService.get(UserApiUrls.forgotpassword);
+    // todo !!!
+    return result;
   }
 
   getWhoami(): Observable<User> {
-    const url = UserApiUrls.whoami;
-    const result = this.apiService.get(url);
+    const result = this.apiService.get(UserApiUrls.whoami);
     return result;
   }
 
