@@ -11,7 +11,7 @@ export class LastUpdatedComponent implements OnInit {
 
   @Input() references: any[];
   constructor() {
-    this.references = ['casd', 'cas1d'];
+    this.references = [];
   }
 
   ngOnInit() {

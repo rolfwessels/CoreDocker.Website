@@ -25,6 +25,7 @@ export class DashboardComponent {
         if (this.hasValidToken) {
           this.user = this.userService.getWhoami();
           this.users = this.userService.getAll();
+          this.users = userService.getAll();
         }
       });
   }
