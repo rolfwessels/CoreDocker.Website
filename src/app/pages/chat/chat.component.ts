@@ -15,6 +15,11 @@ export class ChatComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    Object.defineProperty(WebSocket, 'OPEN', {
+      value: 1,
+    });
+
+
     const protocol = new JsonHubProtocol();
     this.connection = new HubConnectionBuilder()
       .configureLogging(LogLevel.Trace)
