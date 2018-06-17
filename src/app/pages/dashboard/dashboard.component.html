@@ -12,10 +12,10 @@
 </div>
 <div class="row">
   <div class="col-xxxl-3 col-xxl-4 col-md-5">
-    <ngx-last-updated *ngIf="hasValidToken" title="Users" [references]="(users | async)" count="0"></ngx-last-updated>
+    <ngx-last-updated *ngIf="hasValidToken" title="Users" [references]="(users | async)" [count]="(usersCount | async)"></ngx-last-updated>
   </div>
   <div class="col-xxxl-3 col-xxl-4 col-md-5">
-    <ngx-last-updated *ngIf="hasValidToken" title="Projects"  [references]="(projects | async)" count="1"></ngx-last-updated>
+    <ngx-last-updated *ngIf="hasValidToken" title="Projects"  [references]="(projects | async)"[count]="(projectsCount | async)"></ngx-last-updated>
   </div>
 
 </div>
