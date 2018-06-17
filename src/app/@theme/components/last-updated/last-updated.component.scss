@@ -1,0 +1,33 @@
+.updated-item-body {
+  margin-top: -20px;
+}
+
+.updated-item-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #ebeef2;
+  padding: 1rem;
+  justify-content: space-between;
+  margin-left: -20px;
+  margin-right: -20px;
+}
+
+.updated-item-name {
+  font-family: Exo;
+    font-weight: 600;
+    color: #2a2a2a;
+    font-size: 0.95rem;
+}
+
+.updated-item-title {
+  font-size: 0.775rem;
+  font-weight: 300;
+  color: #a4abb3;
+}
+
+.updated-item-updateDate {
+  font-size: 0.875rem;
+  font-weight: 300;
+  color: #a4abb3;
+}

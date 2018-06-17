@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { User, UserCreateUpdateModel, UserReferenceModel } from './user.model';
-import { ApiService } from './api.service';
+import { ApiService } from '../api.service';
+
 
 enum UserApiUrls {
   getAll = '/api/user',
@@ -29,11 +30,6 @@ export class UserService {
     return result;
   }
 
-  insert(): Observable<User> {
-    const result = this.apiService.get(UserApiUrls.insert);
-    // todo !!!
-    return result;
-  }
 
   getAllDetail(): Observable<User[]> {
     const result = this.apiService.get(UserApiUrls.getAllDetail);
@@ -41,22 +37,23 @@ export class UserService {
     return result;
   }
 
-  getById(): Observable<User> {
-    const result = this.apiService.get(UserApiUrls.getById);
+  getById(id: string): Observable<User> {
+    const result = this.apiService.get(UserApiUrls.getById.replace('{id}', id));
+    return result;
+  }
+
+  insert( user: UserCreateUpdateModel): Observable<User> {
+    const result = this.apiService.post(UserApiUrls.insert, user);
     // todo !!!
     return result;
   }
 
   update(id: string, user: UserCreateUpdateModel): Observable<User> {
-    const result = this.apiService.get(UserApiUrls.update);
-    // todo !!!
-    return result;
+    return this.apiService.put(UserApiUrls.update.replace('{id}', id), user);
   }
 
   delete(id): Observable<User> {
-    const result = this.apiService.get(UserApiUrls.delete);
-    // todo !!!
-    return result;
+    return this.apiService.delete(UserApiUrls.delete.replace('{id}', id));
   }
 
   getRoles(): Observable<string[]> {

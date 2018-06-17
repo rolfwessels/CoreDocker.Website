@@ -13,8 +13,6 @@ export class HeaderComponent implements OnInit {
 
   @Input() position = 'normal';
 
-
-
   userMenu = [{ title: 'Profile' }, { title: 'Log out' }];
 
   constructor(private sidebarService: NbSidebarService,

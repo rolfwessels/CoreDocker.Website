@@ -28,5 +28,20 @@ export class ApiService {
     const uri = Location.joinWithSlash(this._location, path);
     return this.http.get(uri);
   }
+
+  post(path: string, data: any): Observable<any> {
+    const uri = Location.joinWithSlash(this._location, path);
+    return this.http.post(uri, data);
+  }
+
+  put(path: string, data: any): Observable<any> {
+    const uri = Location.joinWithSlash(this._location, path);
+    return this.http.put(uri, data);
+  }
+
+  delete(path: string): Observable<any> {
+    const uri = Location.joinWithSlash(this._location, path);
+    return this.http.delete(uri);
+  }
 }
 

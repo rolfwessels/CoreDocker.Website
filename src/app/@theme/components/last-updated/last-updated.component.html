@@ -1,11 +1,24 @@
 <nb-card>
+  <nb-card-header>{{title}} <span>{{count}}</span></nb-card-header>
+  <nb-card-body class="updated-item-body">
 
-  <nb-card-body>
-    <div *ngIf="references === null">Loading...</div>
+      <div class="updated-item-container" *ngIf="references === null">
+          <div class="info-container">
+              <div  class="updated-item-name"> loading ... </div>
+          </div>
+      </div>
 
-    <div *ngFor="let reference of (references| slice:0:5);">
-      <a href="#/users/{{reference.id}}">{{reference.name}}</a>
+
+    <div class="updated-item-container" *ngFor="let reference of (references | slice:0:5);">
+
+        <div class="info-container">
+            <div  class="updated-item-name"> {{reference.name}} </div>
+            <div  class="updated-item-title"> {{reference.decription}} </div>
+
+            <!-- <div  class="updated-item-title"> title </div> -->
+        </div>
+        <div  class="updated-item-updateDate float-right">  {{reference.updateDate  | timeAgo}} </div>
     </div>
-    <div>of {{references?.length}}</div>
   </nb-card-body>
+
 </nb-card>

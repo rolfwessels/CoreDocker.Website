@@ -11,6 +11,8 @@ import { AnalyticsService } from './utils/analytics.service';
 import { OAuth2PassAuthProvider } from './auth/oauth2.provider';
 import { HttpResponse } from '@angular/common/http';
 import { OAuth2Token, AccessToken } from './auth/oath2Token';
+import { NotificationsService } from './utils/notifications.service';
+import { ToasterModule } from 'angular2-toaster';
 
 const socialLinks = [
   {
@@ -88,11 +90,13 @@ const NB_CORE_PROVIDERS = [
     },
   },
   AnalyticsService,
+  NotificationsService,
 ];
 
 @NgModule({
   imports: [
     CommonModule,
+    ToasterModule.forRoot(),
   ],
   exports: [
     NbAuthModule,

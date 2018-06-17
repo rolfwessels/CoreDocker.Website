@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest } from '@angular/common/http';
 import { Observable } from 'rxjs/observable';
 import { NbAuthService } from '@nebular/auth';
-import { OAuth2Token, AccessTokenWithExpireDate } from '../auth/oath2Token';
+import { AccessTokenWithExpireDate, OAuth2Token } from '../../auth/oath2Token';
+
 @Injectable()
 export class OAuth2Interceptor implements HttpInterceptor {
 
