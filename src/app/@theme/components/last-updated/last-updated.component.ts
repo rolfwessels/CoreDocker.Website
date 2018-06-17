@@ -9,7 +9,10 @@ import 'rxjs/add/observable/of';
 })
 export class LastUpdatedComponent implements OnInit {
 
-  @Input() references: any[];
+  @Input() references: LastUpdateModel[];
+  @Input() title: string;
+  @Input() count: string;
+
   constructor() {
     this.references = [];
   }
@@ -20,3 +23,19 @@ export class LastUpdatedComponent implements OnInit {
 
 }
 
+
+export class LastUpdateModel {
+  constructor ( id: string,
+    name: string,
+    updateDate: Date,
+    decription: string = '') {
+    this.id = id;
+    this.name = name;
+    this.decription = decription;
+    this.updateDate = updateDate;
+  }
+  public id: string;
+  public name: string;
+  public decription: string;
+  public updateDate: Date;
+}

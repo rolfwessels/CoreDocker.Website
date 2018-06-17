@@ -1,12 +1,21 @@
 <div class="row">
-  <nb-card *ngIf="!hasValidToken">
-    <nb-card-body >Please <a href="#/auth/login">login</a> to continue.</nb-card-body>
-  </nb-card>
-  <nb-card *ngIf="hasValidToken">
-    <nb-card-body >Welcome user [{{(user | async)?.name}}].</nb-card-body>
-  </nb-card>
+  <div class="col-xxxl-3 col-xxl-4 col-md-5">
+    <nb-card *ngIf="!hasValidToken">
+      <nb-card-body>Please
+        <a href="#/auth/login">login</a> to continue.</nb-card-body>
+    </nb-card>
+    <nb-card *ngIf="hasValidToken">
+      <nb-card-body>Welcome {{(user | async)?.name}}.</nb-card-body>
+    </nb-card>
+  </div>
 
 </div>
 <div class="row">
-    <ngx-last-updated  *ngIf="hasValidToken" [references]="(users | async)" ></ngx-last-updated>
+  <div class="col-xxxl-3 col-xxl-4 col-md-5">
+    <ngx-last-updated *ngIf="hasValidToken" title="Users" [references]="(users | async)" count="0"></ngx-last-updated>
+  </div>
+  <div class="col-xxxl-3 col-xxl-4 col-md-5">
+    <ngx-last-updated *ngIf="hasValidToken" title="Projects"  [references]="(projects | async)" count="1"></ngx-last-updated>
+  </div>
+
 </div>

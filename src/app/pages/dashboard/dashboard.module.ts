@@ -3,11 +3,14 @@ import { NgModule } from '@angular/core';
 
 import { ThemeModule } from '../../@theme/theme.module';
 import { DashboardComponent } from './dashboard.component';
+import { TrafficComponent } from './traffic/traffic.component';
+import { NbBadgeModule } from '@nebular/theme';
 
 
 @NgModule({
   imports: [
     ThemeModule,
+    NbBadgeModule,
   ],
   declarations: [
     DashboardComponent,
