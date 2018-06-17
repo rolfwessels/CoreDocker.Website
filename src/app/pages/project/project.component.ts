@@ -1,16 +1,31 @@
 import { Component, OnInit } from '@angular/core';
 import { LocalDataSource } from 'ng2-smart-table';
 import { UserService } from '../../@core/data/users.service';
+import { ToasterService, ToasterConfig } from 'angular2-toaster';
+import { NotificationsService } from '../../@core/utils/notifications.service';
 
 @Component({
   selector: 'ngx-project',
   templateUrl: './project.component.html',
-  styleUrls: ['./project.component.scss']
+  styleUrls: ['./project.component.scss'],
 })
 
 export class ProjectComponent implements OnInit {
 
   settings = {
+    columns: {
+      name: {
+        title: 'Name',
+        type: 'string',
+      },
+      email: {
+        title: 'Email',
+        type: 'string',
+      },
+    },
+    actions: {
+      position: 'right', // left|right
+    },
     add: {
       addButtonContent: '<i class="nb-plus"></i>',
       createButtonContent: '<i class="nb-checkmark"></i>',
@@ -25,36 +40,28 @@ export class ProjectComponent implements OnInit {
       deleteButtonContent: '<i class="nb-trash"></i>',
       confirmDelete: true,
     },
-    columns: {
-      name: {
-        title: 'Name',
-        type: 'string',
-      },
-      email: {
-        title: 'Email',
-        type: 'string',
-      },
-    },
   };
-
+  config: ToasterConfig;
   source: LocalDataSource = new LocalDataSource();
 
   constructor(private service: UserService,
+    private notifications: NotificationsService,
      ) {
+      this.config = notifications.config;
     this.source.onRemoved().subscribe(remove => {
       this.service.delete(remove.id).subscribe(removed => {
-        console.log(`removed ${removed}`);
+        notifications.info('item has been removed.');
       });
     });
     this.source.onUpdated().subscribe(update => {
       this.service.update(update.id, update).subscribe(updated => {
-        console.log(`updated ${updated}`);
+         notifications.info(`item has been updated.`);
       });
     });
     this.source.onAdded().subscribe(create => {
       create.password = 'sending1';
       this.service.insert(create).subscribe(created => {
-        console.log(`created ${created}`);
+         notifications.info(`item created.`);
       });
     });
     const data = this.service.getAll().subscribe(data1 => {
@@ -69,6 +76,7 @@ export class ProjectComponent implements OnInit {
       event.confirm.reject();
     }
   }
+
   ngOnInit() {
   }
 
