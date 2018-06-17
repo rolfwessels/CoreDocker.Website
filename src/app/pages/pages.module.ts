@@ -5,6 +5,9 @@ import { DashboardModule } from './dashboard/dashboard.module';
 import { PagesRoutingModule } from './pages-routing.module';
 import { ThemeModule } from '../@theme/theme.module';
 import { ChatComponent } from './chat/chat.component';
+import { ProjectComponent } from './project/project.component';
+import { Ng2SmartTableModule } from 'ng2-smart-table';
+import { ToasterModule } from 'angular2-toaster';
 
 const PAGES_COMPONENTS = [
   PagesComponent,
@@ -16,10 +19,15 @@ const PAGES_COMPONENTS = [
     PagesRoutingModule,
     ThemeModule,
     DashboardModule,
+    Ng2SmartTableModule,
+    ToasterModule,
   ],
 
   declarations: [
     ...PAGES_COMPONENTS,
+    ProjectComponent,
+  ],
+  providers: [
   ],
 })
 export class PagesModule {

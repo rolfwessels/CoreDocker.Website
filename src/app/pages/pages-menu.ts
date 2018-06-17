@@ -8,10 +8,14 @@ export const MENU_ITEMS: NbMenuItem[] = [
     home: true,
   },
   {
+    title: 'Projects',
+    icon: 'nb-notifications',
+    link: '/pages/projects',
+  },
+  {
     title: 'Chat',
     icon: 'nb-notifications',
     link: '/pages/chat',
-    home: true,
   },
   {
     title: 'FEATURES',
