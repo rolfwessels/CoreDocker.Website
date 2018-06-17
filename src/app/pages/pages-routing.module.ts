@@ -5,6 +5,7 @@ import { PagesComponent } from './pages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ChatComponent } from './chat/chat.component';
 import { ProjectComponent } from './project/project.component';
+import { UserComponent } from './user/user.component';
 
 const routes: Routes = [{
   path: '',
@@ -21,6 +22,10 @@ const routes: Routes = [{
     {
       path: 'projects',
       component: ProjectComponent,
+    },
+    {
+      path: 'users',
+      component: UserComponent,
     },
     /*scaffolding*/
     {

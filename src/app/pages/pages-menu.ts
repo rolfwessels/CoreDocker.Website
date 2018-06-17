@@ -12,6 +12,11 @@ export const MENU_ITEMS: NbMenuItem[] = [
     icon: 'nb-notifications',
     link: '/pages/projects',
   },
+  {
+    title: 'Users',
+    icon: 'nb-notifications',
+    link: '/pages/users',
+  },
   /*scaffolding*/
   {
     title: 'Chat',
