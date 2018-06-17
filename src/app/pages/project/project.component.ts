@@ -122,7 +122,25 @@ export class ProjectComponent implements OnInit {
     },
     {
       "FileName": "pages-routing.module.ts",
-      "Indexline": import { ProjectComponent } from './project/project.component';",
+      "Indexline": "import { ProjectComponent }",
+      "InsertAbove": false,
+      "InsertInline": false,
+      "Lines": [
+        "import { ProjectComponent } from './project/project.component';"
+      ]
+    },
+    {
+      "FileName": "pages.module.ts",
+      "Indexline": "ProjectComponent,",
+      "InsertAbove": true,
+      "InsertInline": false,
+      "Lines": [
+        "ProjectComponent,"
+      ]
+    },
+    {
+      "FileName": "pages.module.ts",
+      "Indexline": "/project.component",
       "InsertAbove": false,
       "InsertInline": false,
       "Lines": [
