@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LocalDataSource } from 'ng2-smart-table';
-import { UserService } from '../../@core/data/users.service';
+import { UserService } from '../../@core/data/users/users.service';
 import { ToasterService, ToasterConfig } from 'angular2-toaster';
 import { NotificationsService } from '../../@core/utils/notifications.service';
 import { NbLoginComponent } from '@nebular/auth';

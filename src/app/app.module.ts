@@ -16,7 +16,7 @@ import { ThemeModule } from './@theme/theme.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NB_AUTH_TOKEN_CLASS } from '@nebular/auth';
 import { OAuth2Token } from './@core/auth/oath2Token';
-import { OAuth2Interceptor } from './@core/data/oauth2.interceptor';
+import { OAuth2Interceptor } from './@core/data/auth/oauth2.interceptor';
 
 
 

@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { User, UserCreateUpdateModel, UserReferenceModel } from './user.model';
-import { ApiService } from './api.service';
+import { ApiService } from '../api.service';
+
 
 enum UserApiUrls {
   getAll = '/api/user',

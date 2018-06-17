@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { NbAuthService } from '@nebular/auth/services/auth.service';
 import { OAuth2Token } from '../../@core/auth/oath2Token';
-import { UserService } from '../../@core/data/users.service';
-import { User, UserReferenceModel } from '../../@core/data/user.model';
+import { UserService } from '../../@core/data/users/users.service';
+import { User, UserReferenceModel } from '../../@core/data/users/user.model';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/empty' ;
 
