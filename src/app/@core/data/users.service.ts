@@ -36,9 +36,8 @@ export class UserService {
     return result;
   }
 
-  getById(): Observable<User> {
-    const result = this.apiService.get(UserApiUrls.getById);
-    // todo !!!
+  getById(id: string): Observable<User> {
+    const result = this.apiService.get(UserApiUrls.getById.replace('{id}', id));
     return result;
   }
 

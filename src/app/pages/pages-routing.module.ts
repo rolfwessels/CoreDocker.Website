@@ -22,6 +22,7 @@ const routes: Routes = [{
       path: 'projects',
       component: ProjectComponent,
     },
+    /*scaffolding*/
     {
       path: '',
       redirectTo: 'dashboard',

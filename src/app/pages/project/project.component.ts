@@ -3,6 +3,9 @@ import { LocalDataSource } from 'ng2-smart-table';
 import { UserService } from '../../@core/data/users.service';
 import { ToasterService, ToasterConfig } from 'angular2-toaster';
 import { NotificationsService } from '../../@core/utils/notifications.service';
+import { NbLoginComponent } from '@nebular/auth';
+import { LogLevel } from '@aspnet/signalr';
+import { DataSource } from 'ng2-smart-table/lib/data-source/data-source';
 
 @Component({
   selector: 'ngx-project',
@@ -48,25 +51,34 @@ export class ProjectComponent implements OnInit {
     private notifications: NotificationsService,
      ) {
       this.config = notifications.config;
+
     this.source.onRemoved().subscribe(remove => {
       this.service.delete(remove.id).subscribe(removed => {
         notifications.info('item has been removed.');
-      });
+      }, err => notifications.error(err.error.message));
     });
+
     this.source.onUpdated().subscribe(update => {
       this.service.update(update.id, update).subscribe(updated => {
          notifications.info(`item has been updated.`);
-      });
+      }, err => notifications.error(err.error.message));
     });
+
     this.source.onAdded().subscribe(create => {
-      create.password = 'sending1';
+      create.password = 'passwordsareverysecure';
       this.service.insert(create).subscribe(created => {
          notifications.info(`item created.`);
+
+      }, err => {
+        notifications.error(err.error.message);
       });
     });
-    const data = this.service.getAll().subscribe(data1 => {
-      this.source.load(data1);
-    });
+
+    const data = this.service.getAll().subscribe(projects => {
+      this.source.load(projects);
+    }, err => notifications.error(err.error.message) );
+
+
   }
 
   onDeleteConfirm(event): void {
@@ -81,3 +93,40 @@ export class ProjectComponent implements OnInit {
   }
 
 }
+
+/* scaffolding [
+    {
+      "FileName": "pages-menu.ts",
+      "Indexline": "\/*scaffolding*\/",
+      "InsertAbove": true,
+      "InsertInline": false,
+      "Lines": [
+        "{",
+        "  title: 'Projects',",
+        "  icon: 'nb-notifications',",
+        "  link: '/pages/projects',",
+        "},",
+      ]
+    },
+    {
+      "FileName": "pages-routing.module.ts",
+      "Indexline": "\/*scaffolding*\/",
+      "InsertAbove": true,
+      "InsertInline": false,
+      "Lines": [
+        "{",
+        "  path: 'projects',",
+        "  component: ProjectComponent,",
+        "},",
+      ]
+    },
+    {
+      "FileName": "pages-routing.module.ts",
+      "Indexline": import { ProjectComponent } from './project/project.component';",
+      "InsertAbove": false,
+      "InsertInline": false,
+      "Lines": [
+        "import { ProjectComponent } from './project/project.component';"
+      ]
+    }
+] scaffolding */
