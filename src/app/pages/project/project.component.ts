@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LocalDataSource } from 'ng2-smart-table';
-import { ToasterService, ToasterConfig } from 'angular2-toaster';
+import { ToasterConfig } from 'angular2-toaster';
 import { NotificationsService } from '../../@core/utils/notifications.service';
-import { NbLoginComponent } from '@nebular/auth';
-import { LogLevel } from '@aspnet/signalr';
-import { DataSource } from 'ng2-smart-table/lib/data-source/data-source';
 import { ProjectService } from '../../@core/data/projects/projects.service';
 
 @Component({
@@ -44,7 +41,7 @@ export class ProjectComponent implements OnInit {
   source: LocalDataSource = new LocalDataSource();
 
   constructor(private service: ProjectService,
-    private notifications: NotificationsService,
+    notifications: NotificationsService,
      ) {
       this.config = notifications.config;
 
@@ -69,7 +66,7 @@ export class ProjectComponent implements OnInit {
       });
     });
 
-    const data = this.service.getAll().subscribe(projects => {
+    this.service.getAll().subscribe(projects => {
       this.source.load(projects);
     }, err => notifications.error(err.error.message) );
 

@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { LocalDataSource } from 'ng2-smart-table';
 import { UserService } from '../../@core/data/users/users.service';
-import { ToasterService, ToasterConfig } from 'angular2-toaster';
+import { ToasterConfig } from 'angular2-toaster';
 import { NotificationsService } from '../../@core/utils/notifications.service';
-import { NbLoginComponent } from '@nebular/auth';
-import { LogLevel } from '@aspnet/signalr';
-import { DataSource } from 'ng2-smart-table/lib/data-source/data-source';
 
 @Component({
   selector: 'ngx-user',
@@ -48,7 +45,7 @@ export class UserComponent implements OnInit {
   source: LocalDataSource = new LocalDataSource();
 
   constructor(private service: UserService,
-    private notifications: NotificationsService,
+    notifications: NotificationsService,
      ) {
       this.config = notifications.config;
 
@@ -74,7 +71,7 @@ export class UserComponent implements OnInit {
       });
     });
 
-    const data = this.service.getAll().subscribe(users => {
+    this.service.getAll().subscribe(users => {
       this.source.load(users);
     }, err => notifications.error(err.error.message) );
 

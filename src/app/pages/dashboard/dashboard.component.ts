@@ -2,15 +2,13 @@ import { Component } from '@angular/core';
 import { NbAuthService } from '@nebular/auth/services/auth.service';
 import { OAuth2Token } from '../../@core/auth/oath2Token';
 import { UserService } from '../../@core/data/users/users.service';
-import { User, UserReferenceModel } from '../../@core/data/users/user.model';
+import { User } from '../../@core/data/users/user.model';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/empty' ;
-import { ProjectService } from '../../@core/data/projects/projects.service';
 import { Project } from '../../@core/data/projects/project.model';
 import { LastUpdateModel } from '../../@theme/components/last-updated/last-updated.component';
 import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
-import { Query } from '@angular/compiler/src/core';
 import { map } from 'rxjs/operators';
 
 @Component({
@@ -28,7 +26,6 @@ export class DashboardComponent {
   constructor(
     private authService: NbAuthService,
     private userService: UserService,
-    private projectService: ProjectService,
     apollo: Apollo,
   ) {
 
