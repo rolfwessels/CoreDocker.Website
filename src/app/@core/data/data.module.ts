@@ -5,14 +5,14 @@ import { UserService } from './users/users.service';
 import { StateService } from './state.service';
 import { AuthService } from './auth/auth.service';
 import { ApiService } from './api.service';
-
-
+import { ProjectService } from './projects/projects.service';
 
 const SERVICES = [
   UserService,
   StateService,
   AuthService,
   ApiService,
+  ProjectService,
 ];
 
 @NgModule({

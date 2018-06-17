@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { LocalDataSource } from 'ng2-smart-table';
-import { UserService } from '../../@core/data/users/users.service';
 import { ToasterService, ToasterConfig } from 'angular2-toaster';
 import { NotificationsService } from '../../@core/utils/notifications.service';
 import { NbLoginComponent } from '@nebular/auth';
 import { LogLevel } from '@aspnet/signalr';
 import { DataSource } from 'ng2-smart-table/lib/data-source/data-source';
+import { ProjectService } from '../../@core/data/projects/projects.service';
 
 @Component({
   selector: 'ngx-project',
@@ -19,10 +19,6 @@ export class ProjectComponent implements OnInit {
     columns: {
       name: {
         title: 'Name',
-        type: 'string',
-      },
-      email: {
-        title: 'Email',
         type: 'string',
       },
     },
@@ -47,28 +43,27 @@ export class ProjectComponent implements OnInit {
   config: ToasterConfig;
   source: LocalDataSource = new LocalDataSource();
 
-  constructor(private service: UserService,
+  constructor(private service: ProjectService,
     private notifications: NotificationsService,
      ) {
       this.config = notifications.config;
 
     this.source.onRemoved().subscribe(remove => {
       this.service.delete(remove.id).subscribe(removed => {
-        notifications.info('item has been removed.');
+        notifications.info(`${remove.name} has been removed.`);
       }, err => notifications.error(err.error.message));
     });
 
     this.source.onUpdated().subscribe(update => {
       this.service.update(update.id, update).subscribe(updated => {
-         notifications.info(`item has been updated.`);
+         notifications.info(`${update.name} has been updated.`);
       }, err => notifications.error(err.error.message));
     });
 
     this.source.onAdded().subscribe(create => {
-      create.password = 'passwordsareverysecure';
       this.service.insert(create).subscribe(created => {
-         notifications.info(`item created.`);
-
+         notifications.info(`${create.name} created.`);
+         Object.assign(create, created);
       }, err => {
         notifications.error(err.error.message);
       });
