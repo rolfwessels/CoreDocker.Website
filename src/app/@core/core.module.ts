@@ -13,6 +13,7 @@ import { HttpResponse } from '@angular/common/http';
 import { OAuth2Token, AccessToken } from './auth/oath2Token';
 import { NotificationsService } from './utils/notifications.service';
 import { ToasterModule } from 'angular2-toaster';
+import { AppSettings } from '../app.settings';
 
 const socialLinks = [
   {
@@ -41,7 +42,7 @@ const NB_CORE_PROVIDERS = [
         service: OAuth2PassAuthProvider,
         config: {
           delay: 3000,
-          baseEndpoint: 'http://localhost:5000',
+          baseEndpoint: AppSettings.ApiEndPoint,
           login: {
             rememberMe: true,
             endpoint: '/connect/token',

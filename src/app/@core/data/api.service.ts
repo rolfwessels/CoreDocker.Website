@@ -4,6 +4,7 @@ import { Location } from '@angular/common';
 import { NbAuthService } from '@nebular/auth/services';
 import { OAuth2Token, AccessTokenWithExpireDate } from '../auth/oath2Token';
 import { Observable } from 'rxjs/Observable';
+import { AppSettings } from '../../app.settings';
 
 @Injectable()
 export class ApiService {
@@ -15,7 +16,7 @@ export class ApiService {
     private http: HttpClient,
     private authService: NbAuthService,
   ) {
-    this._location = 'http://localhost:5000';
+    this._location = AppSettings.ApiEndPoint;
     this.authService.onTokenChange()
       .subscribe((token: OAuth2Token) => {
         this.hasValidToken = token.isValid();

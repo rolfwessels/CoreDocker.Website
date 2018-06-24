@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HubConnectionBuilder, LogLevel, HubConnection, JsonHubProtocol } from '@aspnet/signalr';
+import { AppSettings } from '../../app.settings';
 
 @Component({
   selector: 'ngx-chat',
@@ -21,7 +22,7 @@ export class ChatComponent implements OnInit {
     const protocol = new JsonHubProtocol();
     this.connection = new HubConnectionBuilder()
       .configureLogging(LogLevel.Trace)
-      .withUrl('http://localhost:5000/chat')
+      .withUrl(AppSettings.BuildUrl('/chat'))
       .withHubProtocol(protocol)
       .build();
     this.connection.on('send', data => {

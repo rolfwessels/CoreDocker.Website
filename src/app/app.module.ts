@@ -21,6 +21,7 @@ import { NB_AUTH_TOKEN_CLASS } from '@nebular/auth';
 import { OAuth2Token } from './@core/auth/oath2Token';
 import { OAuth2Interceptor } from './@core/data/auth/oauth2.interceptor';
 import { InMemoryCache } from 'apollo-cache-inmemory';
+import { AppSettings } from './app.settings';
 
 
 
@@ -50,7 +51,7 @@ export class AppModule {
     apollo.create({
       // By default, this client will send queries to the
       // `/graphql` endpoint on the same host
-      link: httpLink.create({uri: 'http://localhost:5000/graphql'}),
+      link: httpLink.create({uri:  AppSettings.BuildUrl('/graphql')}),
       cache: new InMemoryCache(),
     });
   }
